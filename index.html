@@ -1,424 +1,734 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PICAM MOBILIARIOS | Diseño Premium</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PICAM MOBILIARIOS | Mobiliario Premium en Lima</title>
+  <meta name="description" content="Fabricantes de mobiliario exclusivo para pollerías, restaurantes, bares y cafeterías en Perú. Diseños resistentes y elegantes para tu negocio gastronómico." />
+  <meta name="keywords" content="muebles para restaurantes, mobiliario gastronómico lima, cajas de pollería, barras de bar, fabricantes de muebles peru" />
+  <link rel="icon" type="image/png" href="IMG/logofavicon.jpeg" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand fw-bold cursor-pointer fs-4" onclick="navegar('inicio')">
-                PICAM <span class="text-dorado">MOBILIARIOS</span>
-            </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav ms-auto text-uppercase">
-                    <li class="nav-item"><a class="nav-link active" id="link-inicio" onclick="navegar('inicio')">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" id="link-nosotros" onclick="navegar('nosotros')">Nosotros</a></li>
-                    <li class="nav-item"><a class="nav-link" id="link-catalogo" onclick="navegar('catalogo')">Catálogo</a></li>
-                    <li class="nav-item"><a class="nav-link" id="link-contacto" onclick="navegar('contacto')">Contacto</a></li>
-                </ul>
-            </div>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand fw-bold cursor-pointer d-flex align-items-center" onclick="navegar('inicio')">
+      <img src="IMG/logoremove.png" alt="Logo PICAM" class="brand-logo me-2" />
+      <span class="fs-4">PICAM <span class="text-dorado">MOBILIARIOS</span></span>
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav ms-auto text-uppercase">
+        <li class="nav-item"><a class="nav-link active" id="link-inicio" onclick="navegar('inicio')">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" id="link-nosotros" onclick="navegar('nosotros')">Nosotros</a></li>
+        <li class="nav-item"><a class="nav-link" id="link-catalogo" onclick="navegar('catalogo')">Catálogo</a></li>
+        <li class="nav-item"><a class="nav-link" id="link-contacto" onclick="navegar('contacto')">Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ==================== SECCIÓN INICIO ==================== -->
+  <div id="seccion-inicio" class="vista-seccion">
+    <header class="hero-section">
+      <div class="hero-overlay"></div>
+      <div class="container hero-content text-center text-white">
+        <h2 class="text-dorado ls-2 fw-bold mb-3 animate-fade-in">DISEÑO EXCLUSIVO</h2>
+        <h1 class="display-2 fw-black mb-4 animate-slide-up">
+          PICAM MOBILIARIOS<br />EXCLUSIVO PARA NEGOCIOS
+        </h1>
+        <p class="lead mb-5 text-white-50 fw-light animate-fade-in-delay">Especialistas en Proyectos Gastronómicos</p>
+        <button onclick="navegar('catalogo')" class="btn btn-dorado btn-lg rounded-pill px-5 py-3 shadow-lg animate-bounce">
+          VER COLECCIÓN
+        </button>
+      </div>
+    </header>
+
+    <!-- CARRUSEL DE PROYECTOS -->
+    <section class="py-5 bg-white" style="padding-top: 100px !important;">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h5 class="text-dorado fw-bold text-uppercase animate-fade-in">Portafolio</h5>
+          <h2 class="text-verde fw-bold display-6 animate-slide-up">TRABAJOS REALIZADOS</h2>
         </div>
-    </nav>
-
-    <main>
-
-        <div id="seccion-inicio" class="vista-seccion">
-            <header class="hero-section">
-                <div class="hero-overlay"></div> 
-                <div class="container hero-content text-center text-white">
-                    <h2 class="text-dorado ls-2 fw-bold mb-3">DISEÑO EXCLUSIVO</h2>
-                    <h1 class="display-2 fw-black mb-4">MOBILIARIO PARA<br>TU MARCA</h1>
-                    <p class="lead mb-5 text-white-50 fw-light">Especialistas en Pollerías, Restaurantes y Bares</p>
-                    <button onclick="navegar('catalogo')" class="btn btn-dorado btn-lg rounded-pill px-5 py-3 shadow-lg">VER COLECCIÓN</button>
-                </div>
-            </header>
-
-            <section class="py-5 bg-verde-suave">
-                <div class="container">
-                    <div class="text-center mb-5">
-                        <h5 class="text-dorado fw-bold text-uppercase">Portafolio</h5>
-                        <h2 class="text-verde fw-bold display-6">TRABAJOS REALIZADOS</h2>
-                    </div>
-                    
-                    <div id="carruselPro" class="carousel slide shadow-lg rounded-4 overflow-hidden" data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carruselPro" data-bs-slide-to="0" class="active"></button>
-                            <button type="button" data-bs-target="#carruselPro" data-bs-slide-to="1"></button>
-                            <button type="button" data-bs-target="#carruselPro" data-bs-slide-to="2"></button>
-                            <button type="button" data-bs-target="#carruselPro" data-bs-slide-to="3"></button>
-                            <button type="button" data-bs-target="#carruselPro" data-bs-slide-to="4"></button>
-                            <button type="button" data-bs-target="#carruselPro" data-bs-slide-to="5"></button>
-                        </div>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active" data-bs-interval="3000">
-                                <img src="https://images.pexels.com/photos/2829030/pexels-photo-2829030.jpeg" class="d-block w-100" style="height: 500px; object-fit: cover;" alt="Trabajo 1">
-                            </div>
-                            <div class="carousel-item" data-bs-interval="3000">
-                                <img src="https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg" class="d-block w-100" style="height: 500px; object-fit: cover;" alt="Trabajo 2">
-                            </div>
-                            <div class="carousel-item" data-bs-interval="3000">
-                                <img src="https://images.pexels.com/photos/276528/pexels-photo-276528.jpeg" class="d-block w-100" style="height: 500px; object-fit: cover;" alt="Trabajo 3">
-                            </div>
-                            <div class="carousel-item" data-bs-interval="3000">
-                                <img src="https://images.pexels.com/photos/1449773/pexels-photo-1449773.jpeg" class="d-block w-100" style="height: 500px; object-fit: cover;" alt="Trabajo 4">
-                            </div>
-                            <div class="carousel-item" data-bs-interval="3000">
-                                <img src="https://images.pexels.com/photos/416320/pexels-photo-416320.jpeg" class="d-block w-100" style="height: 500px; object-fit: cover;" alt="Trabajo 5">
-                            </div>
-                            <div class="carousel-item" data-bs-interval="3000">
-                                <img src="https://images.pexels.com/photos/2079246/pexels-photo-2079246.jpeg" class="d-block w-100" style="height: 500px; object-fit: cover;" alt="Trabajo 6">
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carruselPro" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carruselPro" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
-                    </div>
-                </div>
-            </section>
+        <div id="carruselPro" class="carousel slide shadow-lg rounded-4 overflow-hidden" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carruselPro" data-bs-slide-to="0" class="active" aria-current="true"></button>
+            <button type="button" data-bs-target="#carruselPro" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#carruselPro" data-bs-slide-to="2"></button>
+            <button type="button" data-bs-target="#carruselPro" data-bs-slide-to="3"></button>
+            <button type="button" data-bs-target="#carruselPro" data-bs-slide-to="4"></button>
+            <button type="button" data-bs-target="#carruselPro" data-bs-slide-to="5"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="4000">
+              <img src="https://images.pexels.com/photos/2829030/pexels-photo-2829030.jpeg" class="d-block w-100" alt="Proyecto Pollería Premium" />
+              <div class="carousel-caption-custom">
+                <h3>Pollería "El Sabor Criollo"</h3>
+                <p>Mobiliario completo - Lima Norte</p>
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="4000">
+              <img src="https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg" class="d-block w-100" alt="Proyecto Bar Moderno" />
+              <div class="carousel-caption-custom">
+                <h3>Bar "La Estación"</h3>
+                <p>Barra y mobiliario lounge - Miraflores</p>
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="4000">
+              <img src="https://images.pexels.com/photos/276528/pexels-photo-276528.jpeg" class="d-block w-100" alt="Proyecto Restaurante" />
+              <div class="carousel-caption-custom">
+                <h3>Restaurante "Vista al Mar"</h3>
+                <p>Mesas y sillas ejecutivas - San Isidro</p>
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="4000">
+              <img src="https://images.pexels.com/photos/1449773/pexels-photo-1449773.jpeg" class="d-block w-100" alt="Proyecto Cafetería" />
+              <div class="carousel-caption-custom">
+                <h3>Cafetería "Aroma Divino"</h3>
+                <p>Decoración completa - Barranco</p>
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="4000">
+              <img src="https://images.pexels.com/photos/416320/pexels-photo-416320.jpeg" class="d-block w-100" alt="Proyecto Restobar" />
+              <div class="carousel-caption-custom">
+                <h3>Restobar "La Bohemia"</h3>
+                <p>Ambiente completo - San Miguel</p>
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="4000">
+              <img src="https://images.pexels.com/photos/2079246/pexels-photo-2079246.jpeg" class="d-block w-100" alt="Proyecto Chifa" />
+              <div class="carousel-caption-custom">
+                <h3>Chifa "Dragón Dorado"</h3>
+                <p>Boxes familiares y mesas giratorias - Los Olivos</p>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carruselPro" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carruselPro" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          </button>
         </div>
+      </div>
+    </section>
+  </div>
 
-        <div id="seccion-nosotros" class="vista-seccion d-none">
-            <div class="page-header">
-                <div class="header-overlay"></div>
-                <div class="position-relative z-2 text-center text-white">
-                    <h1 class="fw-black display-3">NOSOTROS</h1>
-                    <p class="lead">La historia detrás de la calidad</p>
-                </div>
-            </div>
-            
-            <div class="container py-5">
-                <div class="row align-items-center mb-5">
-                    <div class="col-lg-6">
-                        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800" class="img-fluid rounded-4 shadow-lg" alt="Taller">
-                    </div>
-                    <div class="col-lg-6 ps-lg-5 mt-4 mt-lg-0">
-                        <h4 class="text-dorado fw-bold text-uppercase">¿Quiénes Somos?</h4>
-                        <h2 class="display-5 fw-bold text-verde mb-3">Fabricantes Peruanos</h2>
-                        <p class="text-muted fs-5">En PICAM no solo hacemos muebles, construimos la identidad de tu negocio. Nuestro taller cuenta con maestros ebanistas dedicados a crear piezas que resistan el paso del tiempo y el alto tránsito.</p>
-                        
-                        <div class="row mt-4 g-3">
-                            <div class="col-4 text-center">
-                                <h3 class="fw-bold text-dorado mb-0">+500</h3>
-                                <small class="text-muted">Clientes</small>
-                            </div>
-                            <div class="col-4 text-center border-start border-end">
-                                <h3 class="fw-bold text-dorado mb-0">100%</h3>
-                                <small class="text-muted">Garantía</small>
-                            </div>
-                            <div class="col-4 text-center">
-                                <h3 class="fw-bold text-dorado mb-0">Perú</h3>
-                                <small class="text-muted">Envíos</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <!-- ==================== SECCIÓN NOSOTROS ==================== -->
+  <section id="seccion-nosotros" class="vista-seccion d-none">
+    <header class="page-header">
+      <div class="header-content">   
+        <h1 class="display-3 fw-black text-uppercase">SOBRE PICAM MOBILIARIOS</h1>
+        <p class="lead ls-2">Pasión por la ebanistería y el diseño industrial</p>
+      </div>
+    </header>
+    <div class="container py-5">
+      <div class="row align-items-center mb-5">
+        <div class="col-lg-6">
+          <img
+            src="https://images.pexels.com/photos/33321546/pexels-photo-33321546.jpeg"
+            class="img-fluid rounded-4 shadow-lg animate-slide-left"
+            alt="Taller de fabricación de muebles PICAM en Lima"
+            loading="lazy"
+          />
         </div>
-
-        <div id="seccion-catalogo" class="vista-seccion d-none">
-            <div class="page-header">
-                <div class="header-overlay"></div>
-                <div class="position-relative z-2 text-center text-white">
-                    <h1 class="fw-black display-3">CATÁLOGO</h1>
-                    <p class="lead">Selecciona tu rubro</p>
-                </div>
-            </div>
-
-            <div class="container py-5">
-                <div class="text-center mb-5">
-                    <button class="btn btn-filter active" onclick="filtrar('todos', this)">Todos</button>
-                    <button class="btn btn-filter" onclick="filtrar('polleria', this)">Pollería</button>
-                    <button class="btn btn-filter" onclick="filtrar('restaurante', this)">Restaurantes</button>
-                    <button class="btn btn-filter" onclick="filtrar('bar', this)">Bares</button>
-                </div>
-
-                <div class="row g-4">
-                    <div class="col-md-4 item-prod" data-cat="polleria">
-                        <div class="card h-100 shadow-hover">
-                            <img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=600" class="card-img-top" style="height: 260px; object-fit: cover;">
-                            <div class="card-body text-center p-4">
-                                <h5 class="fw-bold text-verde mb-1">Mesa Pollería 4P</h5>
-                                <h4 class="fw-bold text-dark mb-3">S/ 350.00</h4>
-                                <button class="btn btn-outline-verde rounded-pill w-100" onclick="agregarAlCarrito('Mesa Pollería 4P', 350, 'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=600')">Agregar al carrito</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 item-prod" data-cat="polleria">
-                        <div class="card h-100 shadow-hover">
-                            <img src="https://images.unsplash.com/photo-1615529182904-14819c35db37?w=600" class="card-img-top" style="height: 260px; object-fit: cover;">
-                            <div class="card-body text-center p-4">
-                                <h5 class="fw-bold text-verde mb-1">Box Booth Premium</h5>
-                                <h4 class="fw-bold text-dark mb-3">S/ 850.00</h4>
-                                <button class="btn btn-outline-verde rounded-pill w-100" onclick="agregarAlCarrito('Box Booth Premium', 850, 'https://images.unsplash.com/photo-1615529182904-14819c35db37?w=600')">Agregar al carrito</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 item-prod" data-cat="polleria">
-                        <div class="card h-100 shadow-hover">
-                            <img src="https://images.pexels.com/photos/17592270/pexels-photo-17592270.jpeg" class="card-img-top" style="height: 260px; object-fit: cover;">
-                            <div class="card-body text-center p-4">
-                                <h5 class="fw-bold text-verde mb-1">Silla Tránsito Alto</h5>
-                                <h4 class="fw-bold text-dark mb-3">S/ 110.00</h4>
-                                <button class="btn btn-outline-verde rounded-pill w-100" onclick="agregarAlCarrito('Silla Tránsito Alto', 110, 'https://images.pexels.com/photos/17592270/pexels-photo-17592270.jpeg')">Agregar al carrito</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 item-prod" data-cat="restaurante">
-                        <div class="card h-100 shadow-hover">
-                            <img src="https://images.pexels.com/photos/14447108/pexels-photo-14447108.jpeg" class="card-img-top" style="height: 260px; object-fit: cover;">
-                            <div class="card-body text-center p-4">
-                                <h5 class="fw-bold text-verde mb-1">Mesa Ejecutiva</h5>
-                                <h4 class="fw-bold text-dark mb-3">S/ 420.00</h4>
-                                <button class="btn btn-outline-verde rounded-pill w-100" onclick="agregarAlCarrito('Mesa Ejecutiva', 420, 'https://images.pexels.com/photos/14447108/pexels-photo-14447108.jpeg')">Agregar al carrito</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 item-prod" data-cat="restaurante">
-                        <div class="card h-100 shadow-hover">
-                            <img src="https://images.unsplash.com/photo-1577140917170-285929fb55b7?w=600" class="card-img-top" style="height: 260px; object-fit: cover;">
-                            <div class="card-body text-center p-4">
-                                <h5 class="fw-bold text-verde mb-1">Silla Tapizada Gris</h5>
-                                <h4 class="fw-bold text-dark mb-3">S/ 180.00</h4>
-                                <button class="btn btn-outline-verde rounded-pill w-100" onclick="agregarAlCarrito('Silla Tapizada Gris', 180, 'https://images.unsplash.com/photo-1577140917170-285929fb55b7?w=600')">Agregar al carrito</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 item-prod" data-cat="restaurante">
-                        <div class="card h-100 shadow-hover">
-                            <img src="https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?w=600" class="card-img-top" style="height: 260px; object-fit: cover;">
-                            <div class="card-body text-center p-4">
-                                <h5 class="fw-bold text-verde mb-1">Mesa Buffet Redonda</h5>
-                                <h4 class="fw-bold text-dark mb-3">S/ 550.00</h4>
-                                <button class="btn btn-outline-verde rounded-pill w-100" onclick="agregarAlCarrito('Mesa Buffet Redonda', 550, 'https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?w=600')">Agregar al carrito</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 item-prod" data-cat="bar">
-                        <div class="card h-100 shadow-hover">
-                            <img src="https://images.pexels.com/photos/238377/pexels-photo-238377.jpeg" class="card-img-top" style="height: 260px; object-fit: cover;">
-                            <div class="card-body text-center p-4">
-                                <h5 class="fw-bold text-verde mb-1">Taburete Industrial</h5>
-                                <h4 class="fw-bold text-dark mb-3">S/ 180.00</h4>
-                                <button class="btn btn-outline-verde rounded-pill w-100" onclick="agregarAlCarrito('Taburete Industrial', 180, 'https://images.pexels.com/photos/238377/pexels-photo-238377.jpeg')">Agregar al carrito</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 item-prod" data-cat="bar">
-                        <div class="card h-100 shadow-hover">
-                            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600" class="card-img-top" style="height: 260px; object-fit: cover;">
-                            <div class="card-body text-center p-4">
-                                <h5 class="fw-bold text-verde mb-1">Barra Estación Móvil</h5>
-                                <h4 class="fw-bold text-dark mb-3">S/ 1,200.00</h4>
-                                <button class="btn btn-outline-verde rounded-pill w-100" onclick="agregarAlCarrito('Barra Estación Móvil', 1200, 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600')">Agregar al carrito</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 item-prod" data-cat="bar">
-                        <div class="card h-100 shadow-hover">
-                            <img src="https://images.unsplash.com/photo-1560185009-dddeb820c7b7?w=600" class="card-img-top" style="height: 260px; object-fit: cover;">
-                            <div class="card-body text-center p-4">
-                                <h5 class="fw-bold text-verde mb-1">Sillón Lounge Cuero</h5>
-                                <h4 class="fw-bold text-dark mb-3">S/ 480.00</h4>
-                                <button class="btn btn-outline-verde rounded-pill w-100" onclick="agregarAlCarrito('Sillón Lounge Cuero', 480, 'https://images.unsplash.com/photo-1560185009-dddeb820c7b7?w=600')">Agregar al carrito</button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+        <div class="col-lg-6 ps-lg-5 mt-4 mt-lg-0">
+          <header>
+            <p class="text-dorado fw-bold text-uppercase mb-1 animate-fade-in">Nuestra Esencia</p>
+            <h3 class="display-5 fw-bold text-verde mb-3 animate-slide-up">Expertos en Mobiliario Gastronómico</h3>
+          </header>
+          <p class="text-muted fs-5 animate-fade-in-delay">
+            En <strong>PICAM</strong> transformamos espacios en experiencias. Somos fabricantes peruanos dedicados a crear mobiliario que no solo decora, sino que resiste el ritmo exigente de pollerías, bares y restaurantes.
+          </p>
+          <div class="row mt-4 g-3 text-center">
+            <article class="col-4 animate-scale">
+              <p class="h3 fw-bold text-dorado mb-0 counter" data-target="500">0</p>
+              <small class="text-muted text-uppercase">Proyectos</small>
+            </article>
+            <article class="col-4 border-start border-end animate-scale" style="animation-delay: 0.2s;">
+              <p class="h3 fw-bold text-dorado mb-0 counter" data-target="100">0</p>
+              <small class="text-muted text-uppercase">Garantía</small>
+            </article>
+            <article class="col-4 animate-scale" style="animation-delay: 0.4s;">
+              <p class="h3 fw-bold text-dorado mb-0">PERÚ</p>
+              <small class="text-muted text-uppercase">Envíos</small>
+            </article>
+          </div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <div id="seccion-contacto" class="vista-seccion d-none">
-            <div class="page-header">
-                <div class="header-overlay"></div>
-                <div class="position-relative z-2 text-center text-white">
-                    <h1 class="fw-black display-3">CONTACTO</h1>
-                    <p class="lead">Cotiza tu proyecto hoy</p>
-                </div>
-            </div>
+  <!-- ==================== SECCIÓN CATÁLOGO (CORREGIDO) ==================== -->
+  <section id="seccion-catalogo" class="vista-seccion d-none">
+    <header class="page-header">
+      <div class="header-content">
+        <h1 class="display-3 fw-black text-uppercase">CATÁLOGO DE PRODUCTOS</h1>
+        <p class="lead ls-2">Selecciona el rubro de tu negocio gastronómico</p>
+      </div>
+    </header>
+    
+    <div class="container py-5">
+      <!-- FILTROS -->
+      <nav class="filter-nav mb-5" aria-label="Categorías de mobiliario">
+        <button class="btn btn-filter active" onclick="filtrar('todos', this)">Todos</button>
+        <button class="btn btn-filter" onclick="filtrar('polleria', this)">Pollería</button>
+        <button class="btn btn-filter" onclick="filtrar('restaurante', this)">Restaurantes</button>
+        <button class="btn btn-filter" onclick="filtrar('bar', this)">Bares</button>
+        <button class="btn btn-filter" onclick="filtrar('restobar', this)">Restobar</button>
+        <button class="btn btn-filter" onclick="filtrar('cafeteria', this)">Cafeterías</button>
+        <button class="btn btn-filter" onclick="filtrar('chifa', this)">Chifas</button>
+      </nav>
 
-            <div class="container py-5">
-                <div class="row justify-content-center">
-                    <div class="col-lg-10">
-                        <div class="contacto-card d-flex flex-wrap">
-                            <div class="col-md-5 bg-verde-glass text-white p-5 d-flex flex-column justify-content-center">
-                                <h3 class="fw-bold mb-4">¡Hablemos!</h3>
-                                <div class="mb-4">
-                                    <small class="text-dorado fw-bold text-uppercase">Ubicación</small>
-                                    <p class="fs-5">San Juan de Lurigancho, Lima</p>
-                                </div>
-                                <div class="mb-4">
-                                    <small class="text-dorado fw-bold text-uppercase">Teléfono</small>
-                                    <p class="fs-5">+51 924 969 442</p>
-                                </div>
-                                <div>
-                                    <small class="text-dorado fw-bold text-uppercase">Email</small>
-                                    <p class="fs-5">accama893@gmail.com</p>
-                                </div>
-                            </div>
-                            <div class="col-md-7 bg-white p-5">
-                                <h3 class="text-verde fw-bold mb-4">Cotiza tu Proyecto</h3>
-                                <form id="contactForm">
-                                    <div class="row g-3">
-                                        <div class="col-md-6">
-                                            <input type="text" id="nombres" class="form-control bg-light border-0 py-3" placeholder="Nombres *" required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <input type="text" id="apellidos" class="form-control bg-light border-0 py-3" placeholder="Apellidos *" required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <input type="tel" id="telefono" class="form-control bg-light border-0 py-3" placeholder="Teléfono *" required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <input type="email" id="correo" class="form-control bg-light border-0 py-3" placeholder="Correo Electrónico *" required>
-                                        </div>
-                                        <div class="col-12">
-                                            <textarea id="descripcion" class="form-control bg-light border-0 py-3" rows="5" placeholder="Describe tu proyecto o necesidad *" required></textarea>
-                                        </div>
-                                        <div class="col-12">
-                                            <button type="submit" class="btn btn-dorado w-100 py-3 rounded-pill fw-bold">ENVIAR COTIZACIÓN</button>
-                                        </div>
-                                    </div>
-                                </form>
-                                <div id="mensajeExito" class="alert alert-success mt-3 d-none" role="alert">
-                                    <i class="bi bi-check-circle-fill me-2"></i>¡Cotización enviada! Te contactaremos pronto.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </main>
-
-    <footer class="footer-pro">
-        <div class="container footer-grid">
-            
-            <div class="footer-col brand-col">
-                <div class="footer-logo">PICAM <span>MOBILIARIOS</span></div>
-                <p class="footer-desc">
-                    Diseñamos y fabricamos mobiliario exclusivo para negocios gastronómicos. 
-                    Calidad, resistencia y estilo en cada pieza.
-                </p>
-                <div class="footer-socials">
-                    <a href="#" target="_blank" aria-label="Facebook"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="FB"></a>
-                    <a href="#" target="_blank" aria-label="Instagram"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="IG"></a>
-                    <a href="#" target="_blank" aria-label="TikTok"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TT"></a>
-                </div>
-            </div>
-
-            <div class="footer-col links-col">
-                <h4 class="footer-title">NAVEGACIÓN</h4>
-                <ul class="footer-links">
-                    <li><a href="#" onclick="navegar('inicio')">Inicio</a></li>
-                    <li><a href="#" onclick="navegar('nosotros')">Nosotros</a></li>
-                    <li><a href="#" onclick="navegar('catalogo')">Catálogo</a></li>
-                    <li><a href="#" onclick="navegar('contacto')">Contacto</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col contact-col">
-                <h4 class="footer-title">CONTACTO</h4>
-                <div class="contact-item">
-                    <span class="contact-icon">📍</span>
-                    <p>San Juan de Lurigancho, Lima</p>
-                </div>
-                <div class="contact-item">
-                    <span class="contact-icon">📱</span>
-                    <p>+51 924 969 442</p>
-                </div>
-                <div class="contact-item">
-                    <span class="contact-icon">✉️</span>
-                    <p>accama893@gmail.com</p>
-                </div>
-            </div>
-
-        </div>
+      <!-- GRID DE PRODUCTOS (CORREGIDO) -->
+      <div class="productos-grid" id="productos-grid">
         
-        <div class="footer-bottom">
-            <p>&copy; 2025 PICAM MOBILIARIOS. Todos los derechos reservados.</p>
-        </div>
-    </footer>
-
-    <div id="cart-float" class="cart-btn-floating shadow-lg" onclick="abrirCarrito()">
-        <i class="bi bi-cart4"></i>
-        <span id="cart-count" class="badge rounded-pill bg-danger">0</span>
-    </div>
-
-    <div class="modal fade" id="modalCarrito" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content border-0 p-3 rounded-4">
-                <div class="modal-header border-0">
-                    <h3 class="fw-bold text-verde">Tu Carrito</h3>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <div id="lista-carrito" class="mb-4">
-                        <p class="text-center text-muted">El carrito está vacío.</p>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center border-top pt-3">
-                        <h4 class="fw-bold">Total:</h4>
-                        <h4 class="text-verde fw-bold" id="cart-total-price">S/ 0.00</h4>
-                    </div>
-                    
-                    <hr>
-                    
-                    <div id="seccion-yape" class="text-center p-4 bg-yape-container rounded-4 mb-3 d-none">
-                        <div class="d-flex align-items-center justify-content-center mb-3">
-                            <img src="https://cerberusperu.com/wp-content/uploads/2022/03/logo-yape-cerberus.png" alt="Yape" style="height: 40px;" class="me-2">
-                            <h5 class="fw-bold mb-0">Pagar con Yape</h5>
-                        </div>
-                        <div class="qr-yape-container mx-auto mb-3">
-                            <img src="IMG/yape.jpeg" alt="QR Yape PICAM" class="img-fluid rounded-3 shadow">
-                        </div>
-                        <p class="text-muted mb-3"><strong>+51 924 969 442</strong></p>
-                        <p class="small text-muted">Escanea el código QR con tu app Yape</p>
-                        <button class="btn btn-success w-100 rounded-pill py-3 fw-bold mt-2" onclick="confirmarPagoYape()">
-                            <i class="bi bi-check-circle me-2"></i>CONFIRMAR PAGO
-                        </button>
-                    </div>
-
-                    <div class="row g-2 mt-2" id="botonPagar">
-                        <div class="col-12">
-                            <button class="btn btn-yape w-100 rounded-pill py-3 fw-bold" onclick="mostrarYape()">
-                                <i class="bi bi-phone me-2"></i>PAGAR CON YAPE
-                            </button>
-                        </div>
-                    </div>
-                </div>
+        <!-- Producto 1 -->
+        <article class="producto-item" data-cat="polleria">
+          <div class="producto-card">
+            <div class="producto-imagen">
+              <img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=600" alt="Mesa para pollería capacidad 4 personas" loading="lazy">
             </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="modalProducto" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 p-3 rounded-4">
-                <div class="modal-header border-0"><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
-                <div class="modal-body text-center">
-                    <img id="modalImg" src="" class="img-fluid rounded mb-3 shadow" style="max-height: 350px;">
-                    <h3 id="modalTitulo" class="text-verde fw-bold mb-1"></h3>
-                    <h2 id="modalPrecio" class="text-dark fw-black mb-4"></h2>
-                    <button id="modalBtnCart" class="btn btn-dorado w-100 rounded-pill py-3 fw-bold shadow">AGREGAR AL CARRITO</button>
-                </div>
+            <div class="producto-info">
+              <h3 class="producto-nombre">Mesa Pollería 4P</h3>
+              <p class="producto-precio">S/ 350.00</p>
+              <button class="btn-agregar" onclick="agregarAlCarrito('Mesa Pollería 4P', 350, 'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=600')">
+                <i class="bi bi-cart-plus"></i> Agregar al Carrito
+              </button>
             </div>
-        </div>
+          </div>
+        </article>
+
+        <!-- Producto 2 -->
+        <article class="producto-item" data-cat="polleria">
+          <div class="producto-card">
+            <div class="producto-imagen">
+              <img src="https://images.unsplash.com/photo-1615529182904-14819c35db37?w=600" alt="Asiento Box Booth Premium para restaurantes" loading="lazy">
+            </div>
+            <div class="producto-info">
+              <h3 class="producto-nombre">Box Booth Premium</h3>
+              <p class="producto-precio">S/ 850.00</p>
+              <button class="btn-agregar" onclick="agregarAlCarrito('Box Booth Premium', 850, 'https://images.unsplash.com/photo-1615529182904-14819c35db37?w=600')">
+                <i class="bi bi-cart-plus"></i> Agregar al Carrito
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Producto 3 -->
+        <article class="producto-item" data-cat="polleria">
+          <div class="producto-card">
+            <div class="producto-imagen">
+              <img src="https://images.pexels.com/photos/17592270/pexels-photo-17592270.jpeg" alt="Silla de alto tránsito para locales de comida" loading="lazy">
+            </div>
+            <div class="producto-info">
+              <h3 class="producto-nombre">Silla Tránsito Alto</h3>
+              <p class="producto-precio">S/ 110.00</p>
+              <button class="btn-agregar" onclick="agregarAlCarrito('Silla Tránsito Alto', 110, 'https://images.pexels.com/photos/17592270/pexels-photo-17592270.jpeg')">
+                <i class="bi bi-cart-plus"></i> Agregar al Carrito
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Producto 4 -->
+        <article class="producto-item" data-cat="restaurante">
+          <div class="producto-card">
+            <div class="producto-imagen">
+              <img src="https://images.pexels.com/photos/14447108/pexels-photo-14447108.jpeg" alt="Mesa ejecutiva para salón de restaurante" loading="lazy">
+            </div>
+            <div class="producto-info">
+              <h3 class="producto-nombre">Mesa Ejecutiva</h3>
+              <p class="producto-precio">S/ 420.00</p>
+              <button class="btn-agregar" onclick="agregarAlCarrito('Mesa Ejecutiva', 420, 'https://images.pexels.com/photos/14447108/pexels-photo-14447108.jpeg')">
+                <i class="bi bi-cart-plus"></i> Agregar al Carrito
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Producto 5 -->
+        <article class="producto-item" data-cat="restaurante">
+          <div class="producto-card">
+            <div class="producto-imagen">
+              <img src="https://images.unsplash.com/photo-1577140917170-285929fb55b7?w=600" alt="Silla tapizada color gris elegante" loading="lazy">
+            </div>
+            <div class="producto-info">
+              <h3 class="producto-nombre">Silla Tapizada Gris</h3>
+              <p class="producto-precio">S/ 180.00</p>
+              <button class="btn-agregar" onclick="agregarAlCarrito('Silla Tapizada Gris', 180, 'https://images.unsplash.com/photo-1577140917170-285929fb55b7?w=600')">
+                <i class="bi bi-cart-plus"></i> Agregar al Carrito
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Producto 6 -->
+        <article class="producto-item" data-cat="restaurante">
+          <div class="producto-card">
+            <div class="producto-imagen">
+              <img src="https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?w=600" alt="Mesa redonda para buffet" loading="lazy">
+            </div>
+            <div class="producto-info">
+              <h3 class="producto-nombre">Mesa Buffet Redonda</h3>
+              <p class="producto-precio">S/ 550.00</p>
+              <button class="btn-agregar" onclick="agregarAlCarrito('Mesa Buffet Redonda', 550, 'https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?w=600')">
+                <i class="bi bi-cart-plus"></i> Agregar al Carrito
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Producto 7 -->
+        <article class="producto-item" data-cat="bar">
+          <div class="producto-card">
+            <div class="producto-imagen">
+              <img src="https://images.pexels.com/photos/238377/pexels-photo-238377.jpeg" alt="Taburete estilo industrial para barra de bar" loading="lazy">
+            </div>
+            <div class="producto-info">
+              <h3 class="producto-nombre">Taburete Industrial</h3>
+              <p class="producto-precio">S/ 180.00</p>
+              <button class="btn-agregar" onclick="agregarAlCarrito('Taburete Industrial', 180, 'https://images.pexels.com/photos/238377/pexels-photo-238377.jpeg')">
+                <i class="bi bi-cart-plus"></i> Agregar al Carrito
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Producto 8 -->
+        <article class="producto-item" data-cat="bar">
+          <div class="producto-card">
+            <div class="producto-imagen">
+              <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600" alt="Barra de bar móvil para eventos" loading="lazy">
+            </div>
+            <div class="producto-info">
+              <h3 class="producto-nombre">Barra Estación Móvil</h3>
+              <p class="producto-precio">S/ 1,200.00</p>
+              <button class="btn-agregar" onclick="agregarAlCarrito('Barra Estación Móvil', 1200, 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600')">
+                <i class="bi bi-cart-plus"></i> Agregar al Carrito
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Producto 9 -->
+        <article class="producto-item" data-cat="bar">
+          <div class="producto-card">
+            <div class="producto-imagen">
+              <img src="https://images.unsplash.com/photo-1560185009-dddeb820c7b7?w=600" alt="Sillón de cuero estilo lounge" loading="lazy">
+            </div>
+            <div class="producto-info">
+              <h3 class="producto-nombre">Sillón Lounge Cuero</h3>
+              <p class="producto-precio">S/ 480.00</p>
+              <button class="btn-agregar" onclick="agregarAlCarrito('Sillón Lounge Cuero', 480, 'https://images.unsplash.com/photo-1560185009-dddeb820c7b7?w=600')">
+                <i class="bi bi-cart-plus"></i> Agregar al Carrito
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Producto 10 -->
+        <article class="producto-item" data-cat="restobar">
+          <div class="producto-card">
+            <div class="producto-imagen">
+              <img src="IMG/1.jpg" alt="Barra de bar fabricada en madera sólida" loading="lazy">
+            </div>
+            <div class="producto-info">
+              <h3 class="producto-nombre">Barra de Bar Madera</h3>
+              <p class="producto-precio">S/ 950.00</p>
+              <button class="btn-agregar" onclick="agregarAlCarrito('Barra de Bar Madera', 950, 'IMG/1.jpg')">
+                <i class="bi bi-cart-plus"></i> Agregar al Carrito
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Producto 11 -->
+        <article class="producto-item" data-cat="restobar">
+          <div class="producto-card">
+            <div class="producto-imagen">
+              <img src="IMG/3.jpg" alt="Silla metálica modelo Tolix" loading="lazy">
+            </div>
+            <div class="producto-info">
+              <h3 class="producto-nombre">Silla Tolix</h3>
+              <p class="producto-precio">S/ 120.00</p>
+              <button class="btn-agregar" onclick="agregarAlCarrito('Silla Tolix', 120, 'IMG/3.jpg')">
+                <i class="bi bi-cart-plus"></i> Agregar al Carrito
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Producto 12 -->
+        <article class="producto-item" data-cat="restobar">
+          <div class="producto-card">
+            <div class="producto-imagen">
+              <img src="IMG/4.jpg" alt="Mesa de bar estilo vintage" loading="lazy">
+            </div>
+            <div class="producto-info">
+              <h3 class="producto-nombre">Mesa Bar Vintage</h3>
+              <p class="producto-precio">S/ 400.00</p>
+              <button class="btn-agregar" onclick="agregarAlCarrito('Mesa Bar Vintage', 400, 'IMG/4.jpg')">
+                <i class="bi bi-cart-plus"></i> Agregar al Carrito
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Producto 13 -->
+        <article class="producto-item" data-cat="cafeteria">
+          <div class="producto-card">
+            <div class="producto-imagen">
+              <img src="IMG/5.jpg" alt="Mesa circular para cafetería" loading="lazy">
+            </div>
+            <div class="producto-info">
+              <h3 class="producto-nombre">Mesa Circular Café</h3>
+              <p class="producto-precio">S/ 250.00</p>
+              <button class="btn-agregar" onclick="agregarAlCarrito('Mesa Circular Café', 250, 'IMG/5.jpg')">
+                <i class="bi bi-cart-plus"></i> Agregar al Carrito
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Producto 14 -->
+        <article class="producto-item" data-cat="cafeteria">
+          <div class="producto-card">
+            <div class="producto-imagen">
+              <img src="IMG/6.jpg" alt="Silla tapizada colores pastel para café" loading="lazy">
+            </div>
+            <div class="producto-info">
+              <h3 class="producto-nombre">Silla Tapizada Pastel</h3>
+              <p class="producto-precio">S/ 150.00</p>
+              <button class="btn-agregar" onclick="agregarAlCarrito('Silla Tapizada Pastel', 150, 'IMG/6.jpg')">
+                <i class="bi bi-cart-plus"></i> Agregar al Carrito
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Producto 15 -->
+        <article class="producto-item" data-cat="cafeteria">
+          <div class="producto-card">
+            <div class="producto-imagen">
+              <img src="IMG/7.jpg" alt="Estante exhibidor de madera para productos" loading="lazy">
+            </div>
+            <div class="producto-info">
+              <h3 class="producto-nombre">Estante Exhibidor</h3>
+              <p class="producto-precio">S/ 600.00</p>
+              <button class="btn-agregar" onclick="agregarAlCarrito('Estante Exhibidor', 600, 'IMG/7.jpg')">
+                <i class="bi bi-cart-plus"></i> Agregar al Carrito
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Producto 16 -->
+        <article class="producto-item" data-cat="chifa">
+          <div class="producto-card">
+            <div class="producto-imagen">
+              <img src="IMG/8.jpg" alt="Asiento Box familiar para chifa" loading="lazy">
+            </div>
+            <div class="producto-info">
+              <h3 class="producto-nombre">Box Chifa Familiar</h3>
+              <p class="producto-precio">S/ 1,100.00</p>
+              <button class="btn-agregar" onclick="agregarAlCarrito('Box Chifa Familiar', 1100, 'IMG/8.jpg')">
+                <i class="bi bi-cart-plus"></i> Agregar al Carrito
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Producto 17 -->
+        <article class="producto-item" data-cat="chifa">
+          <div class="producto-card">
+            <div class="producto-imagen">
+              <img src="IMG/9.jpg" alt="Silla tradicional para chifa" loading="lazy">
+            </div>
+            <div class="producto-info">
+              <h3 class="producto-nombre">Silla Chifa Tradicional</h3>
+              <p class="producto-precio">S/ 130.00</p>
+              <button class="btn-agregar" onclick="agregarAlCarrito('Silla Chifa Tradicional', 130, 'IMG/9.jpg')">
+                <i class="bi bi-cart-plus"></i> Agregar al Carrito
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Producto 18 -->
+        <article class="producto-item" data-cat="chifa">
+          <div class="producto-card">
+            <div class="producto-imagen">
+              <img src="IMG/fondo.jpg" alt="Mesa redonda giratoria para chifa" loading="lazy">
+            </div>
+            <div class="producto-info">
+              <h3 class="producto-nombre">Mesa Redonda Giratoria</h3>
+              <p class="producto-precio">S/ 1,400.00</p>
+              <button class="btn-agregar" onclick="agregarAlCarrito('Mesa Redonda Giratoria', 1400, 'IMG/fondo.jpg')">
+                <i class="bi bi-cart-plus"></i> Agregar al Carrito
+              </button>
+            </div>
+          </div>
+        </article>
+
+      </div>
     </div>
+  </section>
 
-    <a href="https://wa.me/51924969442" class="whatsapp-float shadow-lg" target="_blank"><i class="bi bi-whatsapp"></i></a>
+  <!-- ==================== SECCIÓN CONTACTO ==================== -->
+  <section id="seccion-contacto" class="vista-seccion d-none">
+    <header class="page-header" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920');">
+      <div class="header-content pt-5">
+        <br><br>
+        <h1 class="display-3 fw-black text-uppercase">CONTACTO DIRECTO</h1>
+        <p class="lead ls-2">Inicia tu proyecto con los expertos</p>
+      </div>
+    </header>
+    <div class="container py-5">
+      <div class="contacto-wrapper shadow-lg">
+        <div class="contacto-info">
+          <h3 class="fw-bold mb-4">Canales de Atención</h3>
+          <div class="info-item">
+            <i class="bi bi-geo-alt-fill text-dorado"></i>
+            <div>
+              <p class="label-dorado">VISÍTANOS</p>
+              <p>Urb. La encantada 1ra. etapa mz. F lt. 20 - Villa Salvador - Lima</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="bi bi-whatsapp text-dorado"></i>
+            <div>
+              <p class="label-dorado">WHATSAPP VENTAS</p>
+              <p>+51 916 694 651</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="bi bi-envelope-fill text-dorado"></i>
+            <div>
+              <p class="label-dorado">CORREO CORPORATIVO</p>
+              <p>picam.mobiliarios55@gmail.com</p>
+            </div>
+          </div>
+          <div class="info-decor"></div>
+        </div>
+        <div class="contacto-form">
+          <h3 class="text-verde fw-bold mb-4">Cotiza tu Mobiliario</h3>
+          <form id="contactForm">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <input type="text" id="nombres" class="form-control-pro" placeholder="Nombres" required />
+                <small class="text-danger d-none" id="error-nombres">Solo se permiten letras</small>
+              </div>
+              <div class="col-md-6">
+                <input type="text" id="apellidos" class="form-control-pro" placeholder="Apellidos" required />
+                <small class="text-danger d-none" id="error-apellidos">Solo se permiten letras</small>
+              </div>
+              <div class="col-md-6">
+                <input type="tel" id="telefono" class="form-control-pro" placeholder="Teléfono " maxlength="9" required />
+                <small class="text-danger d-none" id="error-telefono">Debe tener 9 dígitos numéricos</small>
+              </div>
+              <div class="col-md-6">
+                <input type="email" id="correo" class="form-control-pro" placeholder="Correo Electrónico" required />
+                <small class="text-danger d-none" id="error-correo">Ingrese un correo válido</small>
+              </div>
+              <div class="col-12">
+                <label class="form-label fw-bold text-verde">Ubicación</label>
+                <select id="ubicacion" class="form-control-pro" required onchange="mostrarSubUbicacion()">
+                  <option value="">Seleccione...</option>
+                  <option value="Lima">Lima</option>
+                  <option value="Provincia">Provincia</option>
+                </select>
+              </div>
+              <div class="col-12 d-none" id="campo-sub-ubicacion">
+                <input type="text" id="sub-ubicacion" class="form-control-pro" placeholder="Distrito o Departamento *" />
+                <small class="text-muted">Ejemplo: San Juan de Lurigancho, Arequipa, etc.</small>
+              </div>
+              <div class="col-12">
+                <textarea id="descripcion" class="form-control-pro" rows="4" placeholder="Cuéntanos sobre tu proyecto (tipo de negocio, cantidad de mesas, etc.) " required></textarea>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-dorado w-100 py-3 rounded-pill fw-bold">
+                  <i class="bi bi-send-fill me-2"></i>ENVIAR SOLICITUD DE COTIZACIÓN
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script> 
+<!-- BOTÓN FLOTANTE CARRITO -->
+<div id="cart-float" class="cart-btn-floating shadow-lg" onclick="abrirCarrito()">
+  <i class="bi bi-cart4"></i>
+  <span id="cart-count" class="badge rounded-pill bg-danger">0</span>
+</div>
+
+<!-- MODAL CARRITO -->
+<div class="modal fade" id="modalCarrito" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content border-0 p-3 rounded-4 shadow-lg">
+      <div class="modal-header border-0">
+        <h3 class="fw-bold text-verde mb-0">Tu Pedido</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="lista-carrito" class="mb-4"></div>
+
+        <!-- SECCIÓN MÉTODOS DE PAGO -->
+        <div id="seccion-pago" class="d-none">
+          <div class="text-center mb-4">
+            <h5 class="fw-bold text-verde mb-4">Selecciona tu método de pago</h5>
+            <div class="row g-3 justify-content-center">
+              <div class="col-5">
+                <button class="btn-metodo-pago w-100 active" onclick="seleccionarMetodo('yape')" id="btn-yape">
+                  <img src="https://marketingperu.beglobal.biz/wp-content/uploads/2025/01/yape-logo-fondo-transparente.png" alt="Yape" style="height: 40px; margin-bottom: 10px;" />
+                  <span class="d-block fw-bold">YAPE</span>
+                </button>
+              </div>
+              <div class="col-5">
+                <button class="btn-metodo-pago w-100" onclick="seleccionarMetodo('bcp')" id="btn-bcp">
+                  <img src="https://images.seeklogo.com/logo-png/25/2/bcp-logo-png_seeklogo-250819.png" alt="BCP" style="height: 40px; margin-bottom: 10px;" />
+                  <span class="d-block fw-bold">BCP</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- DATOS YAPE -->
+          <div id="datos-yape" class="metodo-pago-detalle">
+            <div class="text-center">
+              <div class="qr-yape-container mx-auto mb-3">
+                <img src="IMG/yape.jpeg" alt="QR Yape PICAM" />
+              </div>
+              <div class="info-pago-box text-center mx-auto" style="max-width: 350px;">
+                <p class="mb-2"><strong>📱 Número:</strong></p>
+                <p class="fs-4 text-primary fw-bold mb-3">916 694 651</p>
+                <p class="mb-0"><strong>👤 Titular:</strong> PICAM MOBILIARIOS</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- DATOS BCP -->
+          <div id="datos-bcp" class="metodo-pago-detalle d-none">
+            <div class="text-center mb-3">
+              <p class="fw-bold text-verde mb-3">Selecciona el tipo de cuenta:</p>
+              <div class="btn-group w-100" role="group" style="max-width: 400px;">
+                <input type="radio" class="btn-check" name="tipoCuentaBCP" id="radio-bcp-soles" value="soles" checked />
+                <label class="btn btn-outline-primary" for="radio-bcp-soles" onclick="mostrarCuentaBCP('soles')">
+                  <i class="bi bi-wallet2 me-2"></i>Cuenta Soles
+                </label>
+                <input type="radio" class="btn-check" name="tipoCuentaBCP" id="radio-bcp-cci" value="cci" />
+                <label class="btn btn-outline-primary" for="radio-bcp-cci" onclick="mostrarCuentaBCP('cci')">
+                  <i class="bi bi-bank me-2"></i>CCI Interbancaria
+                </label>
+              </div>
+            </div>
+
+            <div id="cuenta-bcp-soles" class="info-pago-box mx-auto" style="max-width: 450px;">
+              <h6 class="text-primary fw-bold mb-3"><i class="bi bi-bank2 me-2"></i>Cuenta Soles BCP:</h6>
+              <p class="fs-3 text-primary fw-bold mb-3 font-monospace">191-08584543-0-54</p>
+              <hr />
+              <p class="mb-0"><strong>👤 Titular:</strong> PICAM MOBILIARIOS</p>
+            </div>
+
+            <div id="cuenta-bcp-cci" class="info-pago-box mx-auto d-none" style="max-width: 450px;">
+              <h6 class="text-primary fw-bold mb-3"><i class="bi bi-arrow-left-right me-2"></i>Cuenta Interbancaria (CCI):</h6>
+              <p class="fs-4 text-primary fw-bold mb-3 font-monospace">002-191-10858454305455</p>
+              <hr />
+              <p class="mb-0"><strong>👤 Titular:</strong> PICAM MOBILIARIOS</p>
+            </div>
+          </div>
+
+          <div class="text-center mt-4">
+            <p class="text-muted mb-2">Total a transferir:</p>
+            <h3 class="fw-black text-dark mb-4" id="pago-total-display">S/ 0.00</h3>
+            <button class="btn-confirmar-pago" onclick="confirmarPago()">
+              <i class="bi bi-whatsapp me-2"></i>CONFIRMAR Y ENVIAR COMPROBANTE
+            </button>
+          </div>
+        </div>
+
+        <!-- RESUMEN DEL CARRITO -->
+        <div id="resumen-pago">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="fw-bold mb-0">Total:</h4>
+            <h4 class="text-verde fw-bold mb-0" id="cart-total-price">S/ 0.00</h4>
+          </div>
+          <button class="btn btn-dorado w-100 py-3 rounded-pill fw-bold" id="botonPagar" onclick="mostrarMetodosPago()">
+            <i class="bi bi-credit-card me-2"></i>PROCEDER AL PAGO
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHATSAPP FLOTANTE -->
+<a href="https://wa.me/51916694651" class="whatsapp-float shadow-lg" target="_blank">
+  <i class="bi bi-whatsapp"></i>
+</a>
+
+<!-- FOOTER -->
+<footer class="footer-pro">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a class="footer-logo text-white text-decoration-none fw-bold fs-4" href="#" onclick="navegar('inicio')">
+          PICAM <span class="text-dorado">MOBILIARIOS</span>
+        </a>
+        <p class="footer-description mt-3">
+          Expertos en la fabricación de mobiliario de alto tránsito. Calidad que define tu marca.
+        </p>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/share/1FoUT31jxe/?mibextid=wwXIfr" target="_blank" class="social-link">
+            <i class="bi bi-facebook"></i>
+          </a>
+          <a href="https://www.instagram.com/picam_mobiliarios" target="_blank" class="social-link">
+            <i class="bi bi-instagram"></i>
+          </a>
+          <a href="https://www.tiktok.com/@picam.mobiliarios" target="_blank" class="social-link">
+            <i class="bi bi-tiktok"></i>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-title">Explorar</h4>
+        <ul class="footer-links">
+          <li><a href="#" onclick="navegar('inicio')">Inicio</a></li>
+          <li><a href="#" onclick="navegar('nosotros')">Nosotros</a></li>
+          <li><a href="#" onclick="navegar('catalogo')">Catálogo</a></li>
+          <li><a href="#" onclick="navegar('contacto')">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-title">Atención</h4>
+        <ul class="footer-contact">
+          <li><i class="bi bi-geo-alt"></i> Urb. La encantada 1ra. etapa mz. F lt. 20 - Villa Salvador - Lima</li>
+          <li><i class="bi bi-whatsapp"></i> +51 916 694 651</li>
+          <li><i class="bi bi-envelope"></i> picam.mobiliarios55@gmail.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 PICAM MOBILIARIOS. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+
 </body>
 </html>
