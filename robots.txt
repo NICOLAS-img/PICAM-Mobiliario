@@ -1,0 +1,34 @@
+# robots.txt para PICAM MOBILIARIOS
+# Optimizado para SEO - Permite el rastreo completo del sitio
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.picammobiliarios.com/sitemap.xml
+
+# Rastreo optimizado para bots principales
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+# Bloquear acceso a recursos innecesarios (si los tienes)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /test/
+
+# Permitir acceso a CSS y JS para renderizado correcto
+Allow: /style.css
+Allow: /script.js
+Allow: /*.css$
+Allow: /*.js$
+Allow: /IMG/

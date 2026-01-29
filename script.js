@@ -1,15 +1,17 @@
 /* ============================================
    PICAM MOBILIARIOS - JavaScript Optimizado
-   ✅ Carrito mejorado
-   ✅ Validaciones completas
-   ✅ Filtros de catálogo corregidos
+   ✅ Navegación SPA | ✅ Galería corregida
+   ✅ Modal de solicitud | ✅ Validaciones
    ============================================ */
 
-// Estado Global
-let carrito = [];
-let total = 0;
-let metodoPagoSeleccionado = 'yape';
-const WHATSAPP_DUENO = '51916694651'; 
+// Constantes globales
+const WHATSAPP_DUENO = '51916694651';
+
+// Estado global del modal de solicitud
+let productoSeleccionado = {
+    nombre: '',
+    imagen: ''
+};
 
 /* ============================================
    1. NAVEGACIÓN SPA
@@ -22,17 +24,28 @@ function navegar(seccion) {
     
     // Mostrar sección actual
     const target = document.getElementById('seccion-' + seccion);
-    if (target) target.classList.remove('d-none');
+    if (target) {
+        target.classList.remove('d-none');
+    }
     
     // Actualizar links del Navbar
-    document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+        link.setAttribute('aria-current', 'false');
+    });
+    
     const linkActivo = document.getElementById('link-' + seccion);
-    if (linkActivo) linkActivo.classList.add('active');
+    if (linkActivo) {
+        linkActivo.classList.add('active');
+        linkActivo.setAttribute('aria-current', 'page');
+    }
     
     // Cerrar menú hamburguesa en móviles
     const navbarCollapse = document.getElementById('navbarContent');
-    const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-    if (bsCollapse) bsCollapse.hide();
+    if (navbarCollapse) {
+        const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+        if (bsCollapse) bsCollapse.hide();
+    }
     
     // Scroll suave al inicio
     window.scrollTo({
@@ -44,10 +57,156 @@ function navegar(seccion) {
     if (seccion === 'nosotros') {
         setTimeout(activarContadores, 300);
     }
+    
+    // Reiniciar galería si es inicio
+    if (seccion === 'inicio') {
+        setTimeout(() => {
+            if (galleryInitialized && galleryTrack) {
+                updateGalleryPosition();
+            }
+        }, 300);
+    }
 }
 
 /* ============================================
-   2. CONTADOR ANIMADO (+500 PROYECTOS)
+   2. GALERÍA MATERIAL FOCUS - VERSIÓN CORREGIDA
+   ============================================ */
+let currentIndex = 0;
+let galleryItems = [];
+let galleryTrack = null;
+let galleryInitialized = false;
+let updateGalleryPosition = null; // Función global para actualizar posición
+
+function initGallery() {
+    if (galleryInitialized) {
+        console.log('⚠️ Galería ya inicializada');
+        return;
+    }
+
+    galleryTrack = document.getElementById('galleryTrack');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const indicatorsContainer = document.getElementById('galleryIndicators');
+
+    if (!galleryTrack || !prevBtn || !nextBtn) {
+        console.error('❌ No se encontraron elementos de galería');
+        return;
+    }
+
+    if (galleryTrack.parentElement) {
+        galleryTrack.parentElement.style.justifyContent = 'flex-start';
+        galleryTrack.parentElement.style.alignItems = 'center';
+    }
+
+    galleryItems = Array.from(galleryTrack.querySelectorAll('.material-gallery-item'));
+    const totalItems = galleryItems.length;
+
+    if (totalItems === 0) {
+        console.error('❌ No se encontraron items en la galería');
+        return;
+    }
+
+    currentIndex = Math.floor(totalItems / 2);
+
+    let startX = 0;
+    let isDragging = false;
+
+    indicatorsContainer.innerHTML = '';
+    galleryItems.forEach((_, i) => {
+        const indicator = document.createElement('button');
+        indicator.className = 'gallery-indicator';
+        indicator.setAttribute('role', 'tab');
+        indicator.setAttribute('aria-label', `Ir a imagen ${i + 1}`);
+        indicator.addEventListener('click', () => goToSlide(i));
+        indicatorsContainer.appendChild(indicator);
+    });
+
+    const indicators = indicatorsContainer.querySelectorAll('.gallery-indicator');
+
+    function updateGallery() {
+        if (!galleryItems[currentIndex]) return;
+        
+        const item = galleryItems[currentIndex];
+        const centerScreen = galleryTrack.parentElement.offsetWidth / 2;
+        const centerItem = item.offsetLeft + (item.offsetWidth / 2);
+        const offset = centerScreen - centerItem;
+
+        galleryTrack.style.transform = `translateX(${offset}px)`;
+
+        galleryItems.forEach((el, index) => {
+            el.classList.toggle('active', index === currentIndex);
+        });
+        
+        indicators.forEach((el, index) => {
+            el.classList.toggle('active', index === currentIndex);
+            el.setAttribute('aria-selected', index === currentIndex ? 'true' : 'false');
+        });
+    }
+
+    // Exportar función para uso externo
+    updateGalleryPosition = updateGallery;
+
+    function goToSlide(index) {
+        currentIndex = Math.max(0, Math.min(index, totalItems - 1));
+        updateGallery();
+    }
+
+    function nextSlide() {
+        if (currentIndex < totalItems - 1) {
+            goToSlide(currentIndex + 1);
+        }
+    }
+
+    function prevSlide() {
+        if (currentIndex > 0) {
+            goToSlide(currentIndex - 1);
+        }
+    }
+
+    // Limpiar eventos anteriores clonando nodos
+    const newPrevBtn = prevBtn.cloneNode(true);
+    const newNextBtn = nextBtn.cloneNode(true);
+    prevBtn.parentNode.replaceChild(newPrevBtn, prevBtn);
+    nextBtn.parentNode.replaceChild(newNextBtn, nextBtn);
+
+    newPrevBtn.addEventListener('click', prevSlide);
+    newNextBtn.addEventListener('click', nextSlide);
+
+    galleryItems.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            if (currentIndex !== index) goToSlide(index);
+        });
+    });
+
+    galleryTrack.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+    }, { passive: true });
+
+    galleryTrack.addEventListener('touchend', (e) => {
+        if (!isDragging) return;
+        isDragging = false;
+        const diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) {
+            diff > 0 ? nextSlide() : prevSlide();
+        }
+    }, { passive: true });
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(updateGallery, 100);
+    });
+
+    setTimeout(updateGallery, 100);
+
+    galleryInitialized = true;
+
+    console.log(`✅ Galería PICAM lista: ${totalItems} trabajos cargados`);
+}
+
+/* ============================================
+   3. CONTADOR ANIMADO (+500 PROYECTOS)
    ============================================ */
 function activarContadores() {
     const contadores = document.querySelectorAll('.counter');
@@ -72,23 +231,22 @@ function activarContadores() {
 }
 
 /* ============================================
-   3. FILTROS DE CATÁLOGO CON ANIMACIÓN (CORREGIDO)
+   4. FILTROS DE CATÁLOGO CON ANIMACIÓN
    ============================================ */
 function filtrar(categoria, btn) {
-    // Actualizar botones
-    document.querySelectorAll('.btn-filter').forEach(b => {
+    document.querySelectorAll('.btn-filter').forEach(b => { 
         b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
     });
     btn.classList.add('active');
+    btn.setAttribute('aria-pressed', 'true');
     
-    // Filtrar productos con animación suave
-    const productos = document.querySelectorAll('.producto-item');
+    const productos = document.querySelectorAll('.producto-item'); 
     
     productos.forEach((producto, index) => {
         const categoriaProducto = producto.getAttribute('data-cat');
         
-        // Primero hacer fade out de todos
-        producto.style.opacity = '0';
+        producto.style.opacity = '0'; 
         producto.style.transform = 'translateY(20px)';
         producto.style.transition = 'all 0.3s ease';
         
@@ -96,8 +254,7 @@ function filtrar(categoria, btn) {
             if (categoria === 'todos' || categoriaProducto === categoria) {
                 producto.style.display = 'block';
                 
-                // Fade in con delay progresivo
-                setTimeout(() => {
+                setTimeout(() => {  
                     producto.style.opacity = '1';
                     producto.style.transform = 'translateY(0)';
                 }, index * 50);
@@ -109,226 +266,234 @@ function filtrar(categoria, btn) {
 }
 
 /* ============================================
-   4. LÓGICA DEL CARRITO
+   5. MODAL DE SOLICITUD DE INFORMACIÓN
    ============================================ */
-function agregarAlCarrito(nombre, precio, img) {
-    const item = { id: Date.now(), nombre, precio, img };
-    carrito.push(item);
-    total += precio; 
+function abrirFormularioSolicitud(nombreProducto, imagenProducto) {
+    productoSeleccionado.nombre = nombreProducto;
+    productoSeleccionado.imagen = imagenProducto;
     
-    actualizarInterfaz();
-    mostrarNotificacion(`✨ ${nombre} añadido al carrito`, 'success');
+    const modalNombre = document.getElementById('modal-producto-nombre');
+    const modalImg = document.getElementById('modal-producto-img');
     
-    // Efecto visual en el botón del carrito
-    const cartBtn = document.getElementById('cart-float');
-    if (cartBtn) {
-        cartBtn.style.transform = 'scale(1.3)';
-        setTimeout(() => {
-            cartBtn.style.transform = 'scale(1)';
-        }, 200);
-    }
-}
-
-function eliminarDelCarrito(id) {
-    const index = carrito.findIndex(item => item.id === id);
-    if (index !== -1) {
-        total -= carrito[index].precio;
-        carrito.splice(index, 1);
-        actualizarInterfaz();
-        mostrarNotificacion('Producto eliminado', 'info');
-    }
-}
-
-function actualizarInterfaz() {
-    const totalFormateado = `S/ ${total.toFixed(2)}`;
-    
-    // Contador flotante
-    const cartCount = document.getElementById('cart-count');
-    if (cartCount) {
-        cartCount.innerText = carrito.length;
-        if (carrito.length > 0) {
-            cartCount.style.transform = 'scale(1.3)';
-            setTimeout(() => cartCount.style.transform = 'scale(1)', 200);
-        }
+    if (modalNombre) modalNombre.textContent = nombreProducto;
+    if (modalImg) {
+        modalImg.src = imagenProducto;
+        modalImg.alt = nombreProducto;
     }
     
-    // Totales en el modal
-    const cartTotal = document.getElementById('cart-total-price');
-    const pagoTotal = document.getElementById('pago-total-display');
+    const form = document.getElementById('formSolicitud');
+    if (form) form.reset();
     
-    if (cartTotal) cartTotal.innerText = totalFormateado;
-    if (pagoTotal) pagoTotal.innerText = totalFormateado;
+    ocultarCamposCondicionales();
     
-    renderizarListaCarrito();
-}
-
-function renderizarListaCarrito() {
-    const lista = document.getElementById('lista-carrito');
-    const resumenPago = document.getElementById('resumen-pago');
-    
-    if (carrito.length === 0) {
-        lista.innerHTML = `
-            <div class="text-center py-5">
-                <i class="bi bi-cart-x display-1 text-muted opacity-25"></i>
-                <p class="mt-3 text-muted">Tu carrito está vacío.</p>
-            </div>`;
-        if (resumenPago) resumenPago.classList.add('d-none');
-        return;
-    }
-
-    lista.innerHTML = carrito.map(item => `
-        <div class="cart-item shadow-sm border-0 mb-3 p-2 rounded-3 bg-white">
-            <img src="${item.img}" alt="${item.nombre}">
-            <div class="cart-item-info">
-                <h6 class="mb-0 fw-bold text-verde">${item.nombre}</h6>
-                <small class="text-dark fw-bold">S/ ${item.precio.toFixed(2)}</small>
-            </div>
-            <button class="btn btn-sm text-danger border-0" onclick="eliminarDelCarrito(${item.id})" title="Eliminar">
-                <i class="bi bi-trash3-fill"></i>
-            </button>
-        </div>
-    `).join('');
-    
-    if (resumenPago) resumenPago.classList.remove('d-none');
-}
-
-/* ============================================
-   5. SISTEMA DE PAGO (YAPE + BCP)
-   ============================================ */
-function abrirCarrito() {
-    // Resetear vistas
-    const seccionPago = document.getElementById('seccion-pago');
-    const listaCarrito = document.getElementById('lista-carrito');
-    const resumenPago = document.getElementById('resumen-pago');
-
-    if (seccionPago) seccionPago.classList.add('d-none');
-    if (listaCarrito) listaCarrito.classList.remove('d-none');
-    
-    if (resumenPago) {
-        if (carrito.length > 0) resumenPago.classList.remove('d-none');
-        else resumenPago.classList.add('d-none');
-    }
-    
-    // Abrir modal
-    const modalElement = document.getElementById('modalCarrito');
+    const modalElement = document.getElementById('modalSolicitud');
     if (modalElement) {
         const modal = new bootstrap.Modal(modalElement);
         modal.show();
     }
 }
 
-function mostrarMetodosPago() {
-    if (carrito.length === 0) {
-        mostrarNotificacion('Agrega productos primero', 'warning');
-        return;
-    }
+function ocultarCamposCondicionales() {
+    const campoDetalleUbicacion = document.getElementById('campo-detalle-ubicacion');
+    const campoColores = document.getElementById('campo-colores');
+    const mensajeLogo = document.getElementById('mensaje-logo');
     
-    // Ocultar resumen, mostrar métodos de pago
-    document.getElementById('lista-carrito').classList.add('d-none');
-    document.getElementById('resumen-pago').classList.add('d-none');
-    
-    const seccionPago = document.getElementById('seccion-pago');
-    if (seccionPago) {
-        seccionPago.classList.remove('d-none');
-        seleccionarMetodo('yape');
-    }
-}
-
-function seleccionarMetodo(metodo) {
-    metodoPagoSeleccionado = metodo;
-    
-    const btnYape = document.getElementById('btn-yape');
-    const btnBcp = document.getElementById('btn-bcp');
-    
-    btnYape.classList.remove('active');
-    btnBcp.classList.remove('active');
-    
-    if (metodo === 'yape') {
-        btnYape.classList.add('active');
-    } else {
-        btnBcp.classList.add('active');
-    }
-    
-    const datosYape = document.getElementById('datos-yape');
-    const datosBcp = document.getElementById('datos-bcp');
-    
-    if (metodo === 'yape') {
-        datosYape.classList.remove('d-none');
-        datosBcp.classList.add('d-none');
-    } else {
-        datosYape.classList.add('d-none');
-        datosBcp.classList.remove('d-none');
-        mostrarCuentaBCP('soles');
-    }
-}
-
-function mostrarCuentaBCP(tipo) {
-    const cuentaSoles = document.getElementById('cuenta-bcp-soles');
-    const cuentaCCI = document.getElementById('cuenta-bcp-cci');
-    
-    if (tipo === 'soles') {
-        cuentaSoles.classList.remove('d-none');
-        cuentaCCI.classList.add('d-none');
-    } else {
-        cuentaSoles.classList.add('d-none');
-        cuentaCCI.classList.remove('d-none');
-    }
-}
-
-function confirmarPago() {
-    if (carrito.length === 0) return;
-
-    let msg = `*🛒 NUEVO PEDIDO - PICAM MOBILIARIOS*%0A`;
-    msg += `================================%0A%0A`;
-    
-    msg += `*PRODUCTOS:*%0A`;
-    carrito.forEach((item, i) => {
-        msg += `${i+1}. ${item.nombre}%0A   S/ ${item.precio.toFixed(2)}%0A`;
-    });
-    
-    msg += `%0A--------------------------------%0A`;
-    msg += `*TOTAL: S/ ${total.toFixed(2)}*%0A`;
-    msg += `--------------------------------%0A%0A`;
-    
-    if (metodoPagoSeleccionado === 'yape') {
-        msg += `💳 *Método de Pago:* YAPE%0A`;
-        msg += `📱 *Número:* 916 694 651%0A`;
-        msg += `👤 *Titular:* PICAM MOBILIARIOS%0A%0A`;
-    } else {
-        const radioBcpSoles = document.getElementById('radio-bcp-soles');
-        const tipoCuenta = radioBcpSoles && radioBcpSoles.checked ? 'Soles' : 'CCI';
-        
-        msg += `💳 *Método de Pago:* BCP - ${tipoCuenta}%0A`;
-        
-        if (tipoCuenta === 'Soles') {
-            msg += `🏦 *Cuenta Soles:* 191-08584543-0-54%0A`;
-        } else {
-            msg += `🔗 *CCI:* 002-191-10858454305455%0A`;
-        }
-        
-        msg += `👤 *Titular:* PICAM MOBILIARIOS%0A%0A`;
-    }
-    
-    msg += `✅ *Pago realizado*%0A`;
-    msg += `📸 _Enviando comprobante de pago..._`;
-
-    window.open(`https://wa.me/${WHATSAPP_DUENO}?text=${msg}`, '_blank');
-
-    setTimeout(() => {
-        carrito = [];
-        total = 0;
-        actualizarInterfaz();
-        
-        const modalElement = document.getElementById('modalCarrito');
-        const modal = bootstrap.Modal.getInstance(modalElement);
-        if (modal) modal.hide();
-        
-        mostrarNotificacion('¡Pedido enviado con éxito!', 'success');
-    }, 1500);
+    if (campoDetalleUbicacion) campoDetalleUbicacion.classList.add('d-none');
+    if (campoColores) campoColores.classList.add('d-none');
+    if (mensajeLogo) mensajeLogo.classList.add('d-none');
 }
 
 /* ============================================
-   6. FORMULARIO DE CONTACTO CON VALIDACIONES
+   6. MOSTRAR/OCULTAR CAMPOS CONDICIONALES
+   ============================================ */
+function mostrarCampoUbicacionSolicitud() {
+    const ubicacion = document.getElementById('ubicacionSolicitud').value;
+    const campoDetalleUbicacion = document.getElementById('campo-detalle-ubicacion');
+    const inputDetalleUbicacion = document.getElementById('detalleUbicacion');
+    const labelDetalleUbicacion = document.getElementById('label-detalle-ubicacion');
+    
+    if (ubicacion) {
+        campoDetalleUbicacion.classList.remove('d-none');
+        inputDetalleUbicacion.required = true;
+        
+        if (ubicacion === 'Lima') {
+            labelDetalleUbicacion.textContent = 'Distrito *';
+            inputDetalleUbicacion.placeholder = 'Ejemplo: San Juan de Lurigancho';
+        } else {
+            labelDetalleUbicacion.textContent = 'Departamento *';
+            inputDetalleUbicacion.placeholder = 'Ejemplo: Arequipa, Cusco';
+        }
+    } else {
+        campoDetalleUbicacion.classList.add('d-none');
+        inputDetalleUbicacion.required = false;
+    }
+}
+
+function mostrarPaletaColores(mostrar) {
+    const campoColores = document.getElementById('campo-colores');
+    if (mostrar) {
+        campoColores.classList.remove('d-none');
+    } else {
+        campoColores.classList.add('d-none');
+        document.querySelectorAll('input[name="colorTapizado"]').forEach(radio => {
+            radio.checked = false;
+        });
+    }
+}
+
+function mostrarMensajeLogo(mostrar) {
+    const mensajeLogo = document.getElementById('mensaje-logo');
+    if (mostrar) {
+        mensajeLogo.classList.remove('d-none');
+    } else {
+        mensajeLogo.classList.add('d-none');
+    }
+}
+
+/* ============================================
+   7. VALIDACIONES DEL FORMULARIO DE SOLICITUD
+   ============================================ */
+function validarSoloLetras(input, errorId) {
+    const valor = input.value;
+    const soloLetras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
+    const errorElement = document.getElementById(errorId);
+    
+    input.value = input.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '');
+    
+    if (valor && !soloLetras.test(valor)) {
+        input.classList.add('is-invalid');
+        if (errorElement) errorElement.classList.remove('d-none');
+        return false;
+    } else {
+        input.classList.remove('is-invalid');
+        if (errorElement) errorElement.classList.add('d-none');
+        return true;
+    }
+}
+
+function validarSoloNumeros(input, errorId) {
+    const valor = input.value;
+    const soloNumeros = /^\d+$/;
+    const errorElement = document.getElementById(errorId);
+    
+    input.value = valor.replace(/[^\d]/g, '');
+    
+    if (valor && (!soloNumeros.test(valor) || parseInt(valor) < 1)) {
+        input.classList.add('is-invalid');
+        if (errorElement) errorElement.classList.remove('d-none');
+        return false;
+    } else {
+        input.classList.remove('is-invalid');
+        if (errorElement) errorElement.classList.add('d-none');
+        return true;
+    }
+}
+
+/* ============================================
+   8. ENVÍO DEL FORMULARIO DE SOLICITUD
+   ============================================ */
+document.addEventListener('DOMContentLoaded', function() {
+    const formSolicitud = document.getElementById('formSolicitud');
+    
+    if (formSolicitud) {
+        const cantidadJuegos = document.getElementById('cantidadJuegos');
+        const nombreCompleto = document.getElementById('nombreCompleto');
+        const detalleUbicacion = document.getElementById('detalleUbicacion');
+        
+        if (cantidadJuegos) {
+            cantidadJuegos.addEventListener('input', function() {
+                validarSoloNumeros(this, 'error-cantidad');
+            });
+        }
+        
+        if (nombreCompleto) {
+            nombreCompleto.addEventListener('input', function() {
+                validarSoloLetras(this, 'error-nombre-completo');
+            });
+        }
+        
+        if (detalleUbicacion) {
+            detalleUbicacion.addEventListener('input', function() {
+                validarSoloLetras(this, 'error-ubicacion');
+            });
+        }
+        
+        formSolicitud.onsubmit = function(e) {
+            e.preventDefault();
+            
+            const cantidad = document.getElementById('cantidadJuegos').value;
+            const nombre = document.getElementById('nombreCompleto').value;
+            const ubicacion = document.getElementById('ubicacionSolicitud').value;
+            const detalle = document.getElementById('detalleUbicacion').value;
+            const logoPersonalizado = document.querySelector('input[name="logoPersonalizado"]:checked');
+            
+            if (!cantidad || parseInt(cantidad) < 1) {
+                mostrarNotificacion('Ingrese una cantidad válida de juegos', 'warning');
+                return;
+            }
+            
+            if (!nombre.trim()) {
+                mostrarNotificacion('Ingrese su nombre completo', 'warning');
+                return;
+            }
+            
+            if (!ubicacion) {
+                mostrarNotificacion('Seleccione su ubicación', 'warning');
+                return;
+            }
+            
+            if (!detalle.trim()) {
+                mostrarNotificacion('Ingrese su distrito o departamento', 'warning');
+                return;
+            }
+            
+            if (!logoPersonalizado) {
+                mostrarNotificacion('Indique si desea logo personalizado', 'warning');
+                return;
+            }
+            
+            let mensaje = `*🛋️ SOLICITUD DE INFORMACIÓN - PICAM*%0A`;
+            mensaje += `================================%0A%0A`;
+            mensaje += `*PRODUCTO:*%0A📦 ${productoSeleccionado.nombre}%0A%0A`;
+            mensaje += `*CANTIDAD:* ${cantidad} juegos%0A%0A`;
+            mensaje += `*DATOS DEL CLIENTE:*%0A`;
+            mensaje += `👤 ${nombre}%0A`;
+            mensaje += `📍 ${ubicacion === 'Lima' ? 'Distrito' : 'Departamento'}: ${detalle}%0A%0A`;
+            
+            const tapizado = document.querySelector('input[name="tapizado"]:checked');
+            if (tapizado) {
+                if (tapizado.value === 'Si') {
+                    const color = document.querySelector('input[name="colorTapizado"]:checked');
+                    if (color) {
+                        mensaje += `*TAPIZADO:* Sí - Color ${color.value}%0A`;
+                    } else {
+                        mensaje += `*TAPIZADO:* Sí%0A`;
+                    }
+                } else {
+                    mensaje += `*TAPIZADO:* No%0A`;
+                }
+            }
+            
+            mensaje += `*LOGO PERSONALIZADO:* ${logoPersonalizado.value}%0A`;
+            if (logoPersonalizado.value === 'Si') {
+                mensaje += `📸 _Por favor, adjunte la imagen del logo_`;
+            }
+            
+            window.open(`https://wa.me/${WHATSAPP_DUENO}?text=${mensaje}`, '_blank');
+            
+            const modalElement = document.getElementById('modalSolicitud');
+            const modal = bootstrap.Modal.getInstance(modalElement);
+            if (modal) modal.hide();
+            
+            setTimeout(() => {
+                mostrarNotificacion('¡Solicitud enviada con éxito!', 'success');
+            }, 500);
+        };
+    }
+});
+
+/* ============================================
+   9. FORMULARIO DE CONTACTO CON VALIDACIONES
    ============================================ */
 function mostrarSubUbicacion() {
     const ubicacion = document.getElementById('ubicacion').value;
@@ -358,11 +523,11 @@ function validarNombre(input, errorId) {
     input.value = input.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '');
     
     if (valor && !soloLetras.test(valor)) {
-        input.classList.add('error');
+        input.classList.add('is-invalid');
         errorElement.classList.remove('d-none');
         return false;
     } else {
-        input.classList.remove('error');
+        input.classList.remove('is-invalid');
         errorElement.classList.add('d-none');
         return true;
     }
@@ -379,11 +544,11 @@ function validarTelefono(input) {
     }
     
     if (valor.length > 0 && valor.length !== 9) {
-        input.classList.add('error');
+        input.classList.add('is-invalid');
         errorElement.classList.remove('d-none');
         return false;
     } else {
-        input.classList.remove('error');
+        input.classList.remove('is-invalid');
         errorElement.classList.add('d-none');
         return true;
     }
@@ -395,18 +560,18 @@ function validarCorreo(input) {
     const errorElement = document.getElementById('error-correo');
     
     if (valor && !regexCorreo.test(valor)) {
-        input.classList.add('error');
+        input.classList.add('is-invalid');
         errorElement.classList.remove('d-none');
         return false;
     } else {
-        input.classList.remove('error');
+        input.classList.remove('is-invalid');
         errorElement.classList.add('d-none');
         return true;
     }
 }
 
 /* ============================================
-   7. ENVÍO DE FORMULARIO A WHATSAPP
+   10. ENVÍO DE FORMULARIO DE CONTACTO
    ============================================ */
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('contactForm');
@@ -491,7 +656,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 /* ============================================
-   8. UTILIDADES
+   11. SISTEMA DE NOTIFICACIONES
    ============================================ */
 function mostrarNotificacion(mensaje, tipo) {
     const iconos = {
@@ -499,6 +664,13 @@ function mostrarNotificacion(mensaje, tipo) {
         'danger': 'exclamation-triangle-fill',
         'warning': 'exclamation-circle-fill',
         'info': 'info-circle-fill'
+    };
+    
+    const colores = {
+        'success': '#198754',
+        'danger': '#dc3545',
+        'warning': '#ffc107',
+        'info': '#0dcaf0'
     };
     
     const toast = document.createElement('div');
@@ -509,7 +681,13 @@ function mostrarNotificacion(mensaje, tipo) {
     toast.style.fontSize = "14px";
     toast.style.fontWeight = "600";
     toast.style.minWidth = "250px";
+    toast.style.maxWidth = "90%";
     toast.style.textAlign = "center";
+    toast.style.backgroundColor = colores[tipo];
+    toast.style.color = tipo === 'warning' ? '#000' : '#fff';
+    toast.style.border = 'none';
+    toast.setAttribute('role', 'alert');
+    toast.setAttribute('aria-live', 'assertive');
     
     toast.innerHTML = `<i class="bi bi-${iconos[tipo]} me-2"></i> ${mensaje}`;
     document.body.appendChild(toast);
@@ -522,7 +700,7 @@ function mostrarNotificacion(mensaje, tipo) {
 }
 
 /* ============================================
-   9. NAVBAR SÓLIDO AL SCROLL
+   12. NAVBAR SÓLIDO AL SCROLL
    ============================================ */
 window.addEventListener('scroll', function() {
     const nav = document.getElementById('mainNav');
@@ -536,16 +714,20 @@ window.addEventListener('scroll', function() {
 });
 
 /* ============================================
-   10. INICIALIZACIÓN
+   13. INICIALIZACIÓN GLOBAL
    ============================================ */
 window.onload = () => {
     navegar('inicio');
-    actualizarInterfaz();
+    initGallery();
     
     console.log(
-        "%c 🪑 PICAM MOBILIARIOS | Sistema Web Profesional %c \n%c ✅ Catálogo ordenado | ✅ 100% Responsivo | ✅ Filtros optimizados \n%c Versión 4.0 Final - 2025",
+        "%c 🪑 PICAM MOBILIARIOS | Sistema Web Profesional %c \n" +
+        "%c ✅ SEO Optimizado | ✅ 100% Responsivo | ✅ Sin Carrito \n" +
+        "%c ✅ Modal de Solicitud | ✅ Galería 3D | ✅ Validaciones \n" +
+        "%c Versión 5.0 Final - 2025",
         "color: #FFD700; font-size: 16px; font-weight: bold; background: #1e3d2b; padding: 10px 20px; border-radius: 8px 8px 0 0;",
         "",
+        "color: #2d5f3f; font-size: 12px; background: #f0f0f0; padding: 5px 20px;",
         "color: #2d5f3f; font-size: 12px; background: #f0f0f0; padding: 5px 20px;",
         "color: #888; font-size: 10px; font-style: italic; background: #f0f0f0; padding: 5px 20px; border-radius: 0 0 8px 8px;"
     );
