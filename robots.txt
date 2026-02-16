@@ -1,34 +1,118 @@
-# robots.txt para PICAM MOBILIARIOS
-# Optimizado para SEO - Permite el rastreo completo del sitio
+# ================================================
+# robots.txt - PICAM MOBILIARIOS
+# Fabricantes de Mobiliario Gastronómico en Perú
+# Actualizado: 2025
+# ================================================
 
+# Permitir rastreo completo del sitio
 User-agent: *
 Allow: /
 
-# Sitemap
+# Sitemap principal
 Sitemap: https://www.picammobiliarios.com/sitemap.xml
 
-# Rastreo optimizado para bots principales
+# ================================================
+# CONFIGURACIÓN ESPECÍFICA POR BOT
+# ================================================
+
+# Google (indexación prioritaria)
 User-agent: Googlebot
 Allow: /
 Crawl-delay: 0
 
+User-agent: Googlebot-Image
+Allow: /IMG/
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.png
+Allow: /*.webp
+
+# Bing
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 0
 
+# Yahoo
 User-agent: Slurp
 Allow: /
 Crawl-delay: 1
 
-# Bloquear acceso a recursos innecesarios (si los tienes)
+# Yandex (Rusia)
+User-agent: Yandex
+Allow: /
+Crawl-delay: 1
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 0
+
+# Baidu (China - por si tienes tráfico internacional)
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 1
+
+# ================================================
+# BLOQUEAR ACCESO A ARCHIVOS INNECESARIOS
+# ================================================
+
+# Archivos de configuración (si existen)
 Disallow: /admin/
 Disallow: /private/
-Disallow: /*.json$
 Disallow: /test/
+Disallow: /.git/
+Disallow: /node_modules/
 
-# Permitir acceso a CSS y JS para renderizado correcto
+# Archivos JSON que no deben indexarse
+Disallow: /manifest.json
+Disallow: /*.json$
+
+# ================================================
+# PERMITIR RECURSOS CRÍTICOS PARA SEO
+# ================================================
+
+# CSS y JavaScript (esencial para renderizado)
 Allow: /style.css
 Allow: /script.js
 Allow: /*.css$
 Allow: /*.js$
+
+# Imágenes (crítico para SEO de imágenes)
 Allow: /IMG/
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.webp$
+Allow: /*.svg$
+Allow: /*.gif$
+
+# Fuentes (si las tienes localmente)
+Allow: /fonts/
+Allow: /*.woff$
+Allow: /*.woff2$
+Allow: /*.ttf$
+
+# Favicons
+Allow: /favicon.ico
+Allow: /apple-touch-icon.png
+Allow: /android-chrome-*.png
+
+# ================================================
+# BLOQUEAR BOTS MALICIOSOS (opcional)
+# ================================================
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: dotbot
+Disallow: /
+
+# ================================================
+# FIN DEL ARCHIVO
+# ================================================

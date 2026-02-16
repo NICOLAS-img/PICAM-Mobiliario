@@ -1,19 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
-  <!-- Página Principal -->
+  <!-- ========================================
+       PICAM MOBILIARIOS - Sitemap Principal
+       Fabricantes de Mobiliario Gastronómico
+       Actualizado: 2025-02-14
+       ======================================== -->
+  
+  <!-- Página Principal / Hero -->
   <url>
     <loc>https://www.picammobiliarios.com/</loc>
-    <lastmod>2025-01-28</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2025-02-14</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.picammobiliarios.com/IMG/hero-picam/hero-inicio-picam-mobiliarios.webp</image:loc>
+      <image:title>PICAM Mobiliarios - Fabricantes de Muebles para Restaurantes en Lima Perú</image:title>
+      <image:caption>Mobiliario premium para pollerías, restaurantes, cevicherías y bares</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.picammobiliarios.com/IMG/logoremove.png</image:loc>
+      <image:title>Logo PICAM Mobiliarios</image:title>
+    </image:image>
   </url>
   
   <!-- Sección Nosotros -->
   <url>
     <loc>https://www.picammobiliarios.com/#nosotros</loc>
-    <lastmod>2025-01-28</lastmod>
+    <lastmod>2025-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -21,60 +37,155 @@
   <!-- Catálogo General -->
   <url>
     <loc>https://www.picammobiliarios.com/#catalogo</loc>
-    <lastmod>2025-01-28</lastmod>
+    <lastmod>2025-02-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.picammobiliarios.com/IMG/polleria-picam/asientos-tipo-box-booth-para-polleria-madera-y-cuero-peru.webp</image:loc>
+      <image:title>Box Booth para Pollería - Madera y Cuero Premium</image:title>
+      <image:caption>Asientos tipo box booth fabricados en Perú para pollerías</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.picammobiliarios.com/IMG/cevicheria-picam/mesa-madera-4-sillas-estilo-industrial-cevicheria-picam-mobiliarios.webp</image:loc>
+      <image:title>Mesa y Sillas Estilo Industrial para Cevichería</image:title>
+      <image:caption>Juego de mesa de madera con 4 sillas para cevichería Lima</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.picammobiliarios.com/IMG/restaurante-picam/mobiliario-para-restaurante-moderno-madera-clara-lima.webp</image:loc>
+      <image:title>Mobiliario Moderno para Restaurante en Madera Clara</image:title>
+      <image:caption>Set completo de mobiliario para restaurante moderno Lima</image:caption>
+    </image:image>
   </url>
   
   <!-- Contacto -->
   <url>
     <loc>https://www.picammobiliarios.com/#contacto</loc>
-    <lastmod>2025-01-28</lastmod>
+    <lastmod>2025-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
-  <!-- Categorías de Productos -->
+  <!-- ========================================
+       CATEGORÍAS DE PRODUCTOS
+       ======================================== -->
+  
+  <!-- Pollerías -->
   <url>
     <loc>https://www.picammobiliarios.com/#catalogo?cat=polleria</loc>
-    <lastmod>2025-01-28</lastmod>
+    <lastmod>2025-02-14</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.picammobiliarios.com/IMG/polleria-picam/asientos-tipo-box-booth-para-polleria-madera-y-cuero-peru.webp</image:loc>
+      <image:title>Box Booth Pollería Premium - PICAM</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.picammobiliarios.com/IMG/polleria-picam/mesa-para-polleria-con-logo-personalizado-madera-resistente-lima.webp</image:loc>
+      <image:title>Mesa Pollería con Logo Personalizado</image:title>
+    </image:image>
   </url>
   
+  <!-- Restaurantes -->
   <url>
     <loc>https://www.picammobiliarios.com/#catalogo?cat=restaurante</loc>
-    <lastmod>2025-01-28</lastmod>
+    <lastmod>2025-02-14</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.picammobiliarios.com/IMG/restaurante-picam/mobiliario-para-restaurante-moderno-madera-clara-lima.webp</image:loc>
+      <image:title>Mobiliario Restaurante Madera Clara</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.picammobiliarios.com/IMG/restaurante-picam/mobiliario-para-restaurante-moderno-madera-negra-peru.webp</image:loc>
+      <image:title>Mobiliario Restaurante Madera Negra</image:title>
+    </image:image>
   </url>
   
+  <!-- Cevicherías -->
   <url>
     <loc>https://www.picammobiliarios.com/#catalogo?cat=cevicheria</loc>
-    <lastmod>2025-01-28</lastmod>
+    <lastmod>2025-02-14</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.picammobiliarios.com/IMG/cevicheria-picam/mesa-madera-4-sillas-estilo-industrial-cevicheria-picam-mobiliarios.webp</image:loc>
+      <image:title>Mesa Industrial para Cevichería - 4 Sillas</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.picammobiliarios.com/IMG/cevicheria-picam/mesa-madera-barnizada-brillante-sillas-tapizadas-cuero-cevicheria-picam-mobiliarios.webp</image:loc>
+      <image:title>Mesa Barnizada con Sillas Tapizadas Cuero</image:title>
+    </image:image>
   </url>
   
+  <!-- Restobares -->
   <url>
     <loc>https://www.picammobiliarios.com/#catalogo?cat=restobar</loc>
-    <lastmod>2025-01-28</lastmod>
+    <lastmod>2025-02-14</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.picammobiliarios.com/IMG/restobar-picam/mesa-alta-restobar-asientos-tapizados-rojos-peru.webp</image:loc>
+      <image:title>Mesa Alta Restobar - Asientos Tapizados Rojos</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.picammobiliarios.com/IMG/restobar-picam/mesa-restobar-personalizada-logo-madera-barnizada-lima.webp</image:loc>
+      <image:title>Mesa Restobar Personalizada con Logo</image:title>
+    </image:image>
   </url>
   
+  <!-- Cafeterías -->
   <url>
     <loc>https://www.picammobiliarios.com/#catalogo?cat=cafeteria</loc>
-    <lastmod>2025-01-28</lastmod>
+    <lastmod>2025-02-14</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://www.picammobiliarios.com/IMG/cafeteria-picam/mesa-cafeteria-redonda-madera-natural-4-sillones-blancos-ergonomicos.webp</image:loc>
+      <image:title>Mesa Redonda Cafetería - 4 Sillones Blancos</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.picammobiliarios.com/IMG/cafeteria-picam/mesa-cafeteria-cuadrada-negra-minimalista-4-sillas-madera-cuero.webp</image:loc>
+      <image:title>Mesa Cuadrada Cafetería Minimalista</image:title>
+    </image:image>
   </url>
+  
+  <!-- Eventos -->
+  <url>
+    <loc>https://www.picammobiliarios.com/#catalogo?cat=eventos</loc>
+    <lastmod>2025-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://www.picammobiliarios.com/IMG/eventos-picam/juego-lounge-blanco-mesa-alta-taburetes.webp</image:loc>
+      <image:title>Juego Lounge Blanco para Eventos Corporativos</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.picammobiliarios.com/IMG/eventos-picam/mesa-alta-bar-madera-negra-base-cruzada.webp</image:loc>
+      <image:title>Mesa Alta Bar Madera Negra - Eventos Lima</image:title>
+    </image:image>
+  </url>
+  
+  <!-- ========================================
+       GALERÍA DE TRABAJOS (SEO IMAGES)
+       ======================================== -->
   
   <url>
-    <loc>https://www.picammobiliarios.com/#catalogo?cat=chifa</loc>
-    <lastmod>2025-01-28</lastmod>
+    <loc>https://www.picammobiliarios.com/#galeria</loc>
+    <lastmod>2025-02-14</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://www.picammobiliarios.com/IMG/galeria-de-trabajos/booth-restaurante-bicolor-marron-y-blanco.webp</image:loc>
+      <image:title>Booth Bicolor Marrón y Blanco - Proyecto PICAM</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.picammobiliarios.com/IMG/galeria-de-trabajos/fabricacion-linea-booths-restaurante-picam.webp</image:loc>
+      <image:title>Fabricación en Línea de Booths - PICAM Mobiliarios</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.picammobiliarios.com/IMG/galeria-de-trabajos/mobiliario-restaurante-logo-personalizado-sillas-confort.webp</image:loc>
+      <image:title>Mobiliario con Logo Personalizado - Restaurante Lima</image:title>
+    </image:image>
   </url>
-  
+
 </urlset>
